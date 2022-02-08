@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: linear-gradient(120deg , rgb(113, 55, 180),rgb(37, 217, 230));
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.list-container{
+    border : 2px double red;
+}
+.end-btn , .update-btn {
+    display: none;
+}
+.end-btn-bl , .update-btn-bl{
+    display: block;
+}
