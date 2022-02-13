@@ -1,7 +1,7 @@
 const inputForm = document.querySelector("#input-form");
 const ip = document.querySelector("#itemip");
 const list = document.querySelector(".list-container");
-const popup = document.querySelector(".popup");
+const popup = document.querySelector("#popup");
 inputForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputVal = ip.value;
@@ -14,19 +14,15 @@ inputForm.addEventListener("submit", (e) => {
     updateBtn.classList.add("btn-show");
     endTaskBtn.classList.remove("btn-hide");
     endTaskBtn.classList.add("btn-show");
-    console.log(endTaskBtn);
-    endTaskBtn.addEventListener("click", () => {
-      popup.innerText = "Sure you want to delete this task ?";
-      setTimeout(() => {
-        popup.innerText = "";
-      }, 5000);
-    });
   });
   newDiv.addEventListener("mouseleave", () => {
     updateBtn.classList.add("btn-hide");
     endTaskBtn.classList.add("btn-hide");
     updateBtn.classList.remove("btn-show");
     endTaskBtn.classList.remove("btn-show");
+  });
+  endTaskBtn.addEventListener("click", (e) => {
+    endTaskEvent(e.target.parentElement);
   });
 });
 function appendListItem(value) {
@@ -47,4 +43,35 @@ function appendListItem(value) {
   newDiv.classList.add("list-item");
   list.appendChild(newDiv);
   return newDiv;
+}
+function endTaskEvent(parentElement) {
+  popup.classList.remove("popup-hide");
+  popup.classList.add("popup-show");
+  timer();
+  let isUndoTrue = false;
+  let undo = popup.querySelector('.undo');
+  undo.addEventListener("click" , () => {
+    isUndoTrue = true;
+    popup.classList.remove("popup-show");
+    popup.classList.add("popup-hide");
+    clearTimeout(hideTimeout);
+  })
+
+  const hideTimeout = setTimeout(() => {
+    popup.classList.remove("popup-show");
+    popup.classList.add("popup-hide");
+    if (!isUndoTrue) 
+    list.removeChild(parentElement);
+  }, 5000);
+}
+function timer() {
+  let timer = document.querySelector(".timer");
+  let seconds = 5;
+  timer.innerText = seconds;
+  seconds--;
+  let myInterval = setInterval(() => {
+    if (seconds < 0) clearInterval(myInterval);
+    timer.innerText = seconds;
+    seconds--;
+  }, 1000);
 }
