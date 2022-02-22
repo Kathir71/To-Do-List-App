@@ -128,5 +128,6 @@ function updateTaskEvent(e) {
     confirmUpdateBtn.classList.add("btn-hide");
     textBox.classList.add("textbox-hide");
     textBox.classList.remove("textbox-show");
+    isInEditMode = false;
   });
 }
