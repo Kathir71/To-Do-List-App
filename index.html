@@ -6,21 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <script src="script1.js" defer></script>
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h4>Your list</h4>
+    <h2 class = "heading">Your list</h2>
     <div class="list-container">
     </div>
     <form id='input-form'>
-        <label for="itemip">Add a task</label>
-        <input type="text" name="input-item" id="itemip" autocomplete="off">
-        <input type="submit" value="Add task">
+        <input type="text" name="input-item" id="itemip" autocomplete="off" placeholder="Add your task">
+        <input type="submit" value="+" id = "add-btn">
     </form>
     <div class="popup-hide" id = "popup" >
         <div class="timer"></div>
-        <p class="text">Sure do you want to delete the task?</p>
+        <p class="text">Deleting the task</p>
         <p class="undo">Undo</p>
     </div>
 </body>
